@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
+import { useInput } from './hooks/useInput';
 
 function PatientForm() {
 
-const [name, setName] = useState("");
+const {value:firstName, bind:bindFirstName, reset:resetFirstName} = useInput("");
+const {value:lastName, bind:bindLasttName, reset:resetLastName} = useInput("");
+
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Submitting Name ${name}`)
+    alert(`Submitting Name ${firstName} ${lastName}`)
+    resetFirstName();
+    resetLastName();
 }
 
     return (
@@ -15,11 +20,17 @@ const handleSubmit = (e) => {
             First Name:
             <input 
              type="text"
-             value={name}
-             onChange={e => setName(e.target.value)}
+             {...bindFirstName}
             />
         </label>
-        <input type="submit" value="Sumbit" />
+        <label>
+            Last Name:
+            <input 
+             type="text"
+             {...bindLasttName}
+            />
+        </label>
+        <input type="submit" value="Submit" />
       </form>
     );
 }
