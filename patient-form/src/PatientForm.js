@@ -8,15 +8,17 @@ const {value:firstName, bind:bindFirstName, reset:resetFirstName} = useInput("")
 const {value:lastName, bind:bindLastName, reset:resetLastName} = useInput("");
 const {value:age, bind:bindAge, reset:resetAge} = useInput("");
 const {value:disease, bind:bindDisease, reset:resetDisease} = useInput("");
+const {value:cured, bind:bindCured, reset:resetCured} = useInput("");
 
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Submitting Name ${firstName} ${lastName} ${age} ${disease}`)
+    alert(`Submitting Name ${firstName} ${lastName} ${age} ${disease} ${cured}`)
     resetFirstName();
     resetLastName();
     resetAge();
     resetDisease();
+    resetCured();
 }
 
     return (
@@ -55,9 +57,16 @@ const handleSubmit = (e) => {
           />
         </Form.Group>
        
+        <Form.Group>
+          <Form.Label className=" mt-4 mb-4">Cured</Form.Label>
+          <Form.Control 
+            type="text" 
+            {...bindCured}
+          />
+        </Form.Group>
       
         <Button className="mt-4" variant="primary" type="submit">
-          Submit
+          Submit Patient Info
         </Button>
       </Form>
       </>
