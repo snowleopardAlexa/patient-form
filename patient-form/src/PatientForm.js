@@ -1,18 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useInput } from './hooks/useInput';
 import { Form, Button } from 'react-bootstrap';
 
 function PatientForm() {
 
 const {value:firstName, bind:bindFirstName, reset:resetFirstName} = useInput("");
-const {value:lastName, bind:bindLasttName, reset:resetLastName} = useInput("");
+const {value:lastName, bind:bindLastName, reset:resetLastName} = useInput("");
+const {value:age, bind:bindAge, reset:resetAge} = useInput("");
+const {value:disease, bind:bindDisease, reset:resetDisease} = useInput("");
 
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Submitting Name ${firstName} ${lastName}`)
+    alert(`Submitting Name ${firstName} ${lastName} ${age} ${disease}`)
     resetFirstName();
     resetLastName();
+    resetAge();
+    resetDisease();
 }
 
     return (
@@ -31,7 +35,23 @@ const handleSubmit = (e) => {
           <Form.Label className=" mt-4 mb-4">Last Name</Form.Label>
           <Form.Control 
             type="text" 
-            {...bindLasttName}
+            {...bindLastName}
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label className=" mt-4 mb-4">Age</Form.Label>
+          <Form.Control 
+            type="text" 
+            {...bindAge}
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label className=" mt-4 mb-4">Disease</Form.Label>
+          <Form.Control 
+            type="text" 
+            {...bindDisease}
           />
         </Form.Group>
        
