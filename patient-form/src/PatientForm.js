@@ -71,6 +71,4 @@ const handleSubmit = (e) => {
       </Form>
       </>
     );
-}
-
-export default PatientForm;
+  }
